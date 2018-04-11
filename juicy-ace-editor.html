@@ -97,7 +97,10 @@
                 this.injectTheme('#ace_searchbox');
 
                 editor.getSession().on('change', function(event){
-                    element.dispatchEvent(new CustomEvent("change", {bubbles: true, composed: true, detail: event}));
+                    element.dispatchEvent(new CustomEvent("change", {bubbles: true, composed: true, detail: {
+                      event,
+                      value: element.value.trim()
+                    }}));
                 });
             }
 
